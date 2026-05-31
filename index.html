@@ -5,7 +5,7 @@
 <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
 <title>RS Spaw — Fakturomat</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,400;9..144,500;9..144,600&family=DM+Mono:wght@400;500&family=DM+Sans:wght@300;400;500;600&family=Oswald:wght@500;600;700&display=swap" rel="stylesheet">
 <style>
 :root {
   --ink:#1c1a17; --ink-soft:#4a463f; --ink-muted:#959086;
@@ -25,12 +25,16 @@ body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);m
 .shell{display:flex;min-height:100vh}
 .sidebar{width:244px;min-width:244px;background:var(--ink);color:#fff;display:flex;flex-direction:column;position:sticky;top:0;height:100vh;overflow-y:auto;z-index:50}
 .sidebar-logo{padding:28px 24px 20px;border-bottom:1px solid rgba(255,255,255,.08)}
-.logo-mark{display:flex;align-items:center;gap:12px;margin-bottom:4px}
-.logo-icon{width:40px;height:40px;background:var(--accent);border-radius:8px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.logo-icon svg{width:24px;height:24px;color:#fff}
-.logo-text h1{font-family:'Fraunces',serif;font-size:18px;font-weight:600;letter-spacing:-.3px;line-height:1.1}
+.logo-mark{display:flex;align-items:center;gap:14px;margin-bottom:4px}
+/* Pieczęć — wariant 4 */
+.seal-sidebar{width:48px;height:48px;border-radius:50%;border:2px solid var(--accent);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;flex-shrink:0;gap:0}
+.seal-sidebar::before{content:'';position:absolute;inset:4px;border-radius:50%;border:1px solid rgba(184,72,42,.25)}
+.seal-sidebar-rs{font-family:'Oswald',sans-serif;font-size:16px;font-weight:700;color:#fff;letter-spacing:2px;line-height:1;z-index:1}
+.seal-sidebar-line{width:26px;height:1.5px;background:var(--accent);z-index:1;margin:2px 0}
+.seal-sidebar-spaw{font-size:7px;letter-spacing:3px;color:var(--accent);text-transform:uppercase;font-weight:600;z-index:1}
+.logo-text h1{font-family:'Oswald',sans-serif;font-size:17px;font-weight:600;letter-spacing:.5px;line-height:1.1;text-transform:uppercase}
 .logo-text h1 span{color:var(--accent)}
-.logo-text p{font-size:10px;color:rgba(255,255,255,.45);margin-top:1px;letter-spacing:.3px}
+.logo-text p{font-size:9.5px;color:rgba(255,255,255,.4);margin-top:2px;letter-spacing:.4px}
 .sidebar-sub{font-size:10.5px;color:rgba(255,255,255,.35);margin-top:8px;line-height:1.4}
 .nav{padding:12px 0;flex:1}
 .nav-item{display:flex;align-items:center;gap:11px;padding:12px 24px;cursor:pointer;font-size:13.5px;color:rgba(255,255,255,.55);transition:all .15s;border-left:3px solid transparent}
@@ -41,8 +45,15 @@ body{font-family:'DM Sans',sans-serif;background:var(--paper);color:var(--ink);m
 .nav-badge{margin-left:auto;background:var(--accent);color:#fff;font-size:10px;font-weight:700;padding:2px 7px;border-radius:10px;min-width:18px;text-align:center}
 .sidebar-foot{padding:14px 24px;border-top:1px solid rgba(255,255,255,.08);font-size:10.5px;color:rgba(255,255,255,.3);line-height:1.5}
 .main{flex:1;display:flex;flex-direction:column;min-width:0}
-.topbar{background:rgba(250,248,244,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--paper-border);padding:0 28px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:40}
-.topbar-left{display:flex;align-items:center;gap:12px}
+.topbar{background:rgba(250,248,244,.92);backdrop-filter:blur(10px);border-bottom:1px solid var(--paper-border);padding:0 28px;height:60px;display:flex;align-items:center;justify-content:space-between;position:sticky;top:0;z-index:40;position:sticky}
+.topbar-seal{display:flex;align-items:center;gap:10px;position:absolute;left:50%;transform:translateX(-50%)}
+.seal-top{width:36px;height:36px;border-radius:50%;border:2px solid var(--accent);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;flex-shrink:0;gap:0;background:#fff}
+.seal-top::before{content:'';position:absolute;inset:3px;border-radius:50%;border:1px solid rgba(184,72,42,.2)}
+.seal-top-rs{font-family:'Oswald',sans-serif;font-size:11px;font-weight:700;color:var(--ink);letter-spacing:1.5px;line-height:1;z-index:1}
+.seal-top-line{width:18px;height:1.5px;background:var(--accent);z-index:1;margin:1px 0}
+.seal-top-spaw{font-size:5.5px;letter-spacing:2.5px;color:var(--accent);text-transform:uppercase;font-weight:700;z-index:1}
+.topbar-seal-name{font-family:'Oswald',sans-serif;font-size:13px;font-weight:600;letter-spacing:.5px;color:var(--ink);text-transform:uppercase}
+@media(max-width:720px){.topbar-seal-name{display:none}.topbar{position:relative}}
 .menu-btn{display:none;background:none;border:none;cursor:pointer;padding:6px;color:var(--ink)}
 .menu-btn svg{width:22px;height:22px}
 .topbar-title{font-family:'Fraunces',serif;font-size:20px;font-weight:500}
@@ -160,8 +171,11 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 .preview-wrap{background:#fff;border:1px solid var(--paper-border);border-radius:var(--r);box-shadow:var(--shadow-lg);padding:44px 48px;max-width:800px;margin:0 auto}
 .pv-header{display:flex;justify-content:space-between;align-items:flex-start;margin-bottom:30px;gap:14px}
 .pv-brand{display:flex;align-items:flex-start;gap:14px}
-.pv-logo{width:52px;height:52px;background:var(--ink);border-radius:10px;display:flex;align-items:center;justify-content:center;flex-shrink:0}
-.pv-logo svg{width:30px;height:30px;color:#fff}
+.pv-logo{width:64px;height:64px;border-radius:50%;border:2.5px solid var(--ink);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;flex-shrink:0;gap:0;background:#fff}
+.pv-logo::before{content:'';position:absolute;inset:5px;border-radius:50%;border:1px solid #e0dbd2}
+.pv-logo-rs{font-family:'Oswald',sans-serif;font-size:20px;font-weight:700;color:var(--ink);letter-spacing:2px;line-height:1;z-index:1}
+.pv-logo-line{width:32px;height:2px;background:var(--accent);z-index:1;margin:2px 0}
+.pv-logo-spaw{font-size:8px;letter-spacing:3.5px;color:var(--accent);text-transform:uppercase;font-weight:700;z-index:1}
 .pv-brand-text h2{font-family:'Fraunces',serif;font-size:22px;font-weight:600}
 .pv-brand-text p{color:var(--ink-muted);font-size:12.5px;margin-top:2px}
 .pv-brand-text .tagline{font-size:11px;color:var(--accent);font-weight:600;text-transform:uppercase;letter-spacing:.5px;margin-top:3px}
@@ -246,8 +260,10 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
 <aside class="sidebar" id="sidebar">
   <div class="sidebar-logo">
     <div class="logo-mark">
-      <div class="logo-icon">
-        <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg>
+      <div class="seal-sidebar">
+        <div class="seal-sidebar-rs">RS</div>
+        <div class="seal-sidebar-line"></div>
+        <div class="seal-sidebar-spaw">Spaw</div>
       </div>
       <div class="logo-text">
         <h1>RS <span>Spaw</span></h1>
@@ -299,6 +315,14 @@ select{appearance:none;background-image:url("data:image/svg+xml,%3Csvg xmlns='ht
         <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2"><line x1="3" y1="12" x2="21" y2="12"/><line x1="3" y1="6" x2="21" y2="6"/><line x1="3" y1="18" x2="21" y2="18"/></svg>
       </button>
       <div class="topbar-title" id="topbar-title">Pulpit</div>
+    </div>
+    <div class="topbar-seal">
+      <div class="seal-top">
+        <div class="seal-top-rs">RS</div>
+        <div class="seal-top-line"></div>
+        <div class="seal-top-spaw">Spaw</div>
+      </div>
+      <div class="topbar-seal-name">Ryszard Siankowski</div>
     </div>
   </div>
   <div class="content">
@@ -661,7 +685,7 @@ function renderPreview(inv){
   document.getElementById('preview-content').innerHTML=`
     <div class="pv-header">
       <div class="pv-brand">
-        <div class="pv-logo"><svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="1.8"><path d="M12 2L2 7l10 5 10-5-10-5z"/><path d="M2 17l10 5 10-5"/><path d="M2 12l10 5 10-5"/></svg></div>
+        <div class="pv-logo"><div class="pv-logo-rs">RS</div><div class="pv-logo-line"></div><div class="pv-logo-spaw">Spaw</div></div>
         <div class="pv-brand-text"><h2>${esc(inv.seller.name||'RS Spaw')}</h2><p>${esc(inv.seller.addr||'')}</p><p class="tagline">Ryszard Siankowski</p></div>
       </div>
       <div><div class="pv-badge">FAKTURA VAT<span class="num">${esc(inv.number)}</span></div>${paid}</div>
